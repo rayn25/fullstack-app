@@ -2,16 +2,15 @@ const express = require('express');
 const User = require("../models/User");
 const router = express.Router();
 const jwt = require('jsonwebtoken');
+const auth = require("../middleware/auth");
 
-router.get('/auth', (req, res) => {
-
-
+router.get('/auth',auth, (req, res) => {
     return res.json({
-        id: ,
-        email: ,
-        name: ,
-        role: ,
-        image: ,
+        id: req.user._id,
+        email: req.user.email,
+        name: req.user.name,
+        role: req.user.role,
+        image: req.user.image,
     })
 })
 
