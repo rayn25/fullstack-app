@@ -1,9 +1,7 @@
-import React from 'react';
+import React from "react";
+import { Outlet, Navigate } from "react-router-dom";
 
-function NotAuthRoutes(props) {
-    return (
-        <div></div>
-    );
+function NotAuthRoutes({ isAuth }) {
+  return isAuth ? <Navigate to={"/"} /> : <Outlet />;
 }
-
 export default NotAuthRoutes;

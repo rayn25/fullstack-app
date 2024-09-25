@@ -14,4 +14,15 @@ axiosInstance.interceptors.request.use(
   },
 );
 
+axiosInstance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async function (error) {
+    if (error.response.data === "jwt expired") {
+      window.location.reload();
+    }
+  },
+);
+
 export default axiosInstance;

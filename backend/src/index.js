@@ -27,8 +27,6 @@ app.post('/', (req, res) => {
     res.json(req.body);
 })
 
-
-
 // 에러 처리기
 app.use((error, req, res, next) => {
     res.status(error.stats || 500);

@@ -20,6 +20,14 @@ const userSchema = mongoose.Schema({
         default: 0,
     },
     image: String,
+    cart: {
+        type: Array,
+        default: [],
+    },
+    history: {
+        type: Array,
+        default: [],
+    },
 })
 
 userSchema.pre('save', async function(next) {
@@ -35,9 +43,7 @@ userSchema.pre('save', async function(next) {
 
 userSchema.methods.comparePassword = async function (plainPassword) {
     let user = this;
-    console.log(user);
     const match = await bcrypt.compare(plainPassword, user.password);
-    console.log(match);
     return match;
 }
 
